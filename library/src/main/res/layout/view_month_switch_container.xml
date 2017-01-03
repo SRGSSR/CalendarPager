@@ -13,7 +13,6 @@
     android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="@dimen/default_month_view_height"
-    android:background="@android:color/white"
     />
 
 </LinearLayout>
