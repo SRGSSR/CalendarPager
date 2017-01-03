@@ -63,7 +63,7 @@ public class ExpandCalendarMonthView extends View {
     mTextNormalColor = getResources().getColor(R.color.text_color_normal);
     mTextNormalHintColor = getResources().getColor(R.color.text_color_normal_hint);
     mTextSelectColor = getResources().getColor(android.R.color.white);
-    mCircleColor = getResources().getColor(R.color.color_18ffff);
+    mCircleColor = getResources().getColor(R.color.selection_indicator);
 
     mPaintNormal = new Paint(Paint.ANTI_ALIAS_FLAG);
     mPaintNormal.setColor(mTextNormalColor);

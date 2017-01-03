@@ -58,7 +58,7 @@ public class MonthView extends View {
   private void initPaint() {
     mTextNormalColor = getResources().getColor(R.color.text_color_normal);
     mTextSelectColor = getResources().getColor(android.R.color.white);
-    mCircleColor = getResources().getColor(R.color.color_18ffff);
+    mCircleColor = getResources().getColor(R.color.selection_indicator);
 
     mPaintNormal = new Paint(Paint.ANTI_ALIAS_FLAG);
     mPaintNormal.setColor(mTextNormalColor);

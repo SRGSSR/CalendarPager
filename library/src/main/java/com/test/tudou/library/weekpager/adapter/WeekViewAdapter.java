@@ -42,7 +42,7 @@ public class WeekViewAdapter extends RecyclerView.Adapter<WeekViewAdapter.WeekVi
   }
 
   private void updateColor() {
-    indicatorColor = mContext.getResources().getColor(R.color.color_18ffff);
+    indicatorColor = mContext.getResources().getColor(R.color.selection_indicator);
     mTextSelectColor = mContext.getResources().getColor(android.R.color.white);
     mTextNormalColor = mContext.getResources().getColor(R.color.text_color_normal);
     mTextUnableColor = mContext.getResources().getColor(R.color.text_color_light);

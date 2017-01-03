@@ -87,7 +87,7 @@ public class WeekView extends View {
 
 
   private void initPaint() {
-    indicatorColor = getResources().getColor(R.color.color_18ffff);
+    indicatorColor = getResources().getColor(R.color.selection_indicator);
     mTextSelectColor = getResources().getColor(android.R.color.white);
     mTextNormalColor = getResources().getColor(R.color.text_color_normal);
     mTextUnableColor = getResources().getColor(R.color.text_color_light);
