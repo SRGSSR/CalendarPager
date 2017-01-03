@@ -4,13 +4,13 @@
   android:layout_height="wrap_content">
 
   <com.test.tudou.library.monthswitchpager.view.MonthSwitchTextView
-    android:id="@android:id/text2"
+    android:id="@+id/text2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     />
 
   <com.test.tudou.library.monthswitchpager.view.MonthRecyclerView
-    android:id="@android:id/content"
+    android:id="@+id/content"
     android:layout_width="match_parent"
     android:layout_height="@dimen/default_month_view_height"
     android:background="@android:color/white"

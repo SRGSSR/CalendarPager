@@ -3,31 +3,30 @@ package com.tudou.calendarpager.ui.activity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.test.tudou.library.expandcalendar.view.ExpandCalendarMonthView;
 import com.test.tudou.library.expandcalendar.view.ExpandCalendarView;
 import com.test.tudou.library.model.CalendarDay;
 import com.tudou.calendarpager.R;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by tudou on 15-5-19.
  */
 public class ExpandCalendarActivity extends ActionBarActivity implements ExpandCalendarMonthView.OnDayClickListener {
 
-    @InjectView(R.id.view_calendar)
+    @BindView(R.id.view_calendar)
     ExpandCalendarView mMonthPagerView;
-    @InjectView(R.id.text_example)
+    @BindView(R.id.text_example)
     TextView textExample;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expand_calendar);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
         updateData();
     }

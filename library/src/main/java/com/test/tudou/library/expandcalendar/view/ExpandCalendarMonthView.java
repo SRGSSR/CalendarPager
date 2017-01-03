@@ -7,10 +7,11 @@ import android.text.format.DateUtils;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
 import com.test.tudou.library.R;
 import com.test.tudou.library.model.CalendarDay;
 import com.test.tudou.library.util.DayUtils;
-import java.text.DateFormatSymbols;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 

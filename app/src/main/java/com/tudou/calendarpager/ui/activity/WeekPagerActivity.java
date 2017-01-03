@@ -1,19 +1,22 @@
 package com.tudou.calendarpager.ui.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+
+import com.test.tudou.library.model.CalendarDay;
+import com.test.tudou.library.util.DayUtils;
 import com.test.tudou.library.weekpager.adapter.WeekViewAdapter;
 import com.test.tudou.library.weekpager.view.WeekDayViewPager;
 import com.test.tudou.library.weekpager.view.WeekRecyclerView;
-import com.test.tudou.library.model.CalendarDay;
-import com.test.tudou.library.util.DayUtils;
 import com.tudou.calendarpager.R;
 import com.tudou.calendarpager.ui.adapter.SimplePagerAdapter;
+
 import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by tudou on 15-5-19.
@@ -22,23 +25,29 @@ public class WeekPagerActivity extends ActionBarActivity implements WeekDayViewP
 
   private final static String TAG = "WeekPagerActivity";
 
-  @InjectView(R.id.view_pager) WeekDayViewPager mViewPagerContent;
-  @InjectView(R.id.header_recycler_view) WeekRecyclerView mWeekRecyclerView;
-  @InjectView(R.id.text_day_label) TextView mTextView;
+  @BindView(R.id.view_pager) WeekDayViewPager mViewPagerContent;
+  @BindView(R.id.header_recycler_view) WeekRecyclerView mWeekRecyclerView;
+  @BindView(R.id.text_day_label) TextView mTextView;
 
   private SimplePagerAdapter mPagerAdapter;
   private WeekViewAdapter mWeekViewAdapter;
   private static final int OFFSCREEN_PAGE_LIMIT = 1;
+  private Unbinder unbinder;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_week_pager);
-    ButterKnife.inject(this);
+    unbinder = ButterKnife.bind(this);
     setUpPager();
     setUpData();
   }
 
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    unbinder.unbind();
+  }
 
   private void setUpPager() {
     mPagerAdapter = new SimplePagerAdapter(getSupportFragmentManager());

@@ -7,20 +7,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import com.tudou.calendarpager.R;
+
 import com.test.tudou.library.model.CalendarDay;
 import com.test.tudou.library.util.DayUtils;
+import com.tudou.calendarpager.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by tudou on 15-4-30.
  */
 public class SimpleFragment extends Fragment {
 
-  @InjectView(R.id.text) TextView mText;
+  @BindView(R.id.text) TextView mText;
 
   private CalendarDay mCalendarDay;
+  private Unbinder unbinder;
 
   public static SimpleFragment newInstance(CalendarDay calendarDay) {
     SimpleFragment simpleFragment = new SimpleFragment();
@@ -35,7 +39,13 @@ public class SimpleFragment extends Fragment {
 
   @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
-    ButterKnife.inject(this, view);
+    unbinder = ButterKnife.bind(this, view);
     mText.setText("This is at: " + DayUtils.formatEnglishTime(mCalendarDay.getTime()));
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+    unbinder.unbind();
   }
 }

@@ -8,13 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
+
 import com.test.tudou.library.R;
+import com.test.tudou.library.R2;
 import com.test.tudou.library.model.CalendarDay;
 import com.test.tudou.library.util.DayUtils;
+
 import java.util.Calendar;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * Created by tudou on 15-5-18.
@@ -23,15 +28,16 @@ public class MonthSwitchTextView extends RelativeLayout {
 
   private final static String TAG = "MonthSwitchTextView";
 
-  @InjectView(android.R.id.icon1) ForegroundImageView mIconLeft;
-  @InjectView(android.R.id.icon2) ForegroundImageView mIconRight;
-  @InjectView(android.R.id.text1) TextView mTextTitle;
+  @BindView(R2.id.icon1) ForegroundImageView mIconLeft;
+  @BindView(R2.id.icon2) ForegroundImageView mIconRight;
+  @BindView(R2.id.text1) TextView mTextTitle;
 
   private int mPosition;
   private CalendarDay mFirstDay;
   private int mCount;
   private MonthRecyclerView mMonthRecyclerView;
   private int mPrePosition;
+  private Unbinder unbinder;
 
   public MonthSwitchTextView(Context context) {
     this(context, null);
@@ -48,8 +54,20 @@ public class MonthSwitchTextView extends RelativeLayout {
 
   private void initialize(Context context, AttributeSet attrs, int defStyleAttr) {
     LayoutInflater.from(context).inflate(R.layout.view_month_switch_text, this);
-    ButterKnife.inject(this);
   }
+
+  @Override
+  protected void onFinishInflate() {
+    super.onFinishInflate();
+    unbinder = ButterKnife.bind(this);
+  }
+
+  @Override
+  protected void onDetachedFromWindow() {
+    super.onDetachedFromWindow();
+    unbinder.unbind();
+  }
+
 
   private void updateView() {
     if (mPosition == 0) {
@@ -70,16 +88,16 @@ public class MonthSwitchTextView extends RelativeLayout {
   }
 
   @OnClick({
-      android.R.id.icon1, android.R.id.icon2
+      R2.id.icon1, R2.id.icon2
   }) @SuppressWarnings("unused")
   public void onClick(View view) {
     switch (view.getId()) {
-      case android.R.id.icon1:
+      case R2.id.icon1:
         mPosition--;
         update();
         mMonthRecyclerView.scrollToPosition(mPosition);
         break;
-      case android.R.id.icon2:
+      case R2.id.icon2:
         mPosition++;
         update();
         mMonthRecyclerView.scrollToPosition(mPosition);
